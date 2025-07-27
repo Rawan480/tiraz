@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طِراز - نتيجتك الشخصية</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="img/titaz.png" alt="شعار طراز" class="logo"></a>
+    </header>
+    
+    <main id="result-container" class="result-container">
+        <h1 id="welcome-message">أهلاً بكِ</h1>
+
+        <div class="result-section">
+            <h2>شكل جسمك هو:</h2>
+            <img id="body-shape-image" src="" alt="شكل الجسم" class="body-shape-img">
+            <p class="result-text"><strong id="body-shape-result">...</strong></p>
+        </div>
+
+        <!-- ✅ إضافة عرض الأندرتون -->
+        <div class="result-section">
+            <h2>نوع الأندرتون لديك:</h2>
+            <p id="undertone-result">...</p>
+        </div>
+
+        <hr>
+
+        <div class="result-section">
+            <h2>الألوان التي تناسبكِ 🎨</h2>
+            <div class="color-palette" id="color-palette-container">
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="result-section">
+            <h2>فساتين اخترناها لأجلكِ</h2>
+            <div class="dress-gallery" id="dress-gallery-container">
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
