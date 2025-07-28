@@ -26,7 +26,7 @@ const bodyShapeImages = {
 
 const colorSwatches = {
     "cool": [ "img/colors/blue.jpeg", "img/colors/purple.png", "img/colors/green.png", "img/colors/pink.png" ],
-    "warm": [ "img/colors/peach.png", "img/colors/orange.png", "img/colors/.png", "img/colors/brown.png" ],
+    "warm": [ "img/colors/peach.png", "img/colors/orange.png", "img/colors/gold.png", "img/colors/brown.png" ],
     "neutral": [ "img/colors/gray.png", "img/colors/beige.png", "img/colors/white.png", "img/colors/black.png" ]
 };
 
