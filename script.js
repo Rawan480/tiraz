@@ -1,19 +1,29 @@
 // ========== قاعدة البيانات العامة ==========
 const dressDatabase = [
-    {
-        id: 1,
-        name: "فستان موف أنيق",
-        image_url: "img/dresses/dress1.jpg",
-        suitable_body_shapes: ["الساعة الرملية", "المستطيل"],
-        suitable_undertones: ["cool", "neutral"]
-    },
-    {
-        id: 6,
-        name: "فستان أسود كلاسيك",
-        image_url: "img/dresses/dress6.jpg",
-        suitable_body_shapes: ["الساعة الرملية", "المثلث المقلوب", "الكمثري", "المستطيل", "التفاحة"],
-        suitable_undertones: ["cool", "warm", "neutral"]
-    }
+    // فساتين الساعة الرملية
+    { id: 1, name: "فستان أزرق ملكي بقصة الحورية", image_url: "img/dresses/d1.jpg", suitable_body_shapes: ["الساعة الرملية"], suitable_undertones: ["cool"] },
+    { id: 2, name: "فستان أحمر ناري بخصر محدد", image_url: "img/dresses/d2.jpg", suitable_body_shapes: ["الساعة الرملية"], suitable_undertones: ["warm"] },
+    { id: 3, name: "فستان رمادي أنيق ملتف", image_url: "img/dresses/d3.jpg", suitable_body_shapes: ["الساعة الرملية"], suitable_undertones: ["neutral"] },
+
+    // فساتين الكمثري
+    { id: 4, name: "فستان بقصة A-line وأكمام منفوخة", image_url: "img/dresses/d4.jpg", suitable_body_shapes: ["الكمثري"], suitable_undertones: ["cool"] },
+    { id: 5, name: "فستان بقصة Empire بلون الخوخ", image_url: "img/dresses/d5.jpg", suitable_body_shapes: ["الكمثري"], suitable_undertones: ["warm"] },
+    { id: 6, name: "فستان أسود كلاسيكي بتنورة واسعة", image_url: "img/dresses/d6.jpg", suitable_body_shapes: ["الكمثري", "التفاحة"], suitable_undertones: ["cool", "warm", "neutral"] },
+
+    // فساتين المثلث المقلوب
+    { id: 7, name: "فستان وردي فاتح بتفاصيل عند الخصر", image_url: "img/dresses/d7.jpg", suitable_body_shapes: ["المثلث المقلوب"], suitable_undertones: ["cool"] },
+    { id: 8, name: "فستان بياقة V عميقة ولون ترابي", image_url: "img/dresses/d8.jpg", suitable_body_shapes: ["المثلث المقلوب"], suitable_undertones: ["warm"] },
+    { id: 9, name: "فستان بتنورة منفوشة ولون محايد", image_url: "img/dresses/d9.jpg", suitable_body_shapes: ["المثلث المقلوب"], suitable_undertones: ["neutral"] },
+
+    // فساتين التفاحة
+    { id: 10, name: "فستان أخضر زمردي بقصة مستقيمة", image_url: "img/dresses/d10.jpg", suitable_body_shapes: ["التفاحة"], suitable_undertones: ["cool"] },
+    { id: 11, name: "فستان برتقالي منقوش بقصة فضفاضة", image_url: "img/dresses/d11.jpg", suitable_body_shapes: ["التفاحة"], suitable_undertones: ["warm"] },
+    { id: 12, name: "فستان شيفون بيج بكسرات ناعمة", image_url: "img/dresses/d12.jpg", suitable_body_shapes: ["التفاحة"], suitable_undertones: ["neutral"] },
+
+    // فساتين المستطيل
+    { id: 13, name: "فستان بنفسجي بحزام لإضافة تحديد", image_url: "img/dresses/d13.jpg", suitable_body_shapes: ["المستطيل"], suitable_undertones: ["cool"] },
+    { id: 14, name: "فستان ذهبي بطبقات متعددة", image_url: "img/dresses/d14.jpg", suitable_body_shapes: ["المستطيل"], suitable_undertones: ["warm"] },
+    { id: 15, name: "فستان أبيض بكتف واحد", image_url: "img/dresses/d15.jpg", suitable_body_shapes: ["المستطيل"], suitable_undertones: ["neutral"] }
 ];
 
 const bodyShapeImages = {
@@ -23,6 +33,16 @@ const bodyShapeImages = {
     "التفاحة": "img/shapes/apple.jpg",
     "المستطيل": "img/shapes/rec.jpg"
 };
+
+// ✅ قاعدة بيانات نصائح شكل الجسم
+const bodyShapeAdvice = {
+    "الساعة الرملية": "جسمك متوازن بشكل طبيعي. أبرزي جمال خصرك المحدد بالفساتين الملتفة والقصات التي تتبع منحنيات جسمك.",
+    "الكمثري": "لتحقيق التوازن، اختاري فساتين تجذب الانتباه إلى الجزء العلوي من جسمك، مثل الفساتين ذات الياقات المميزة أو قصات A-line.",
+    "المثلث المقلوب": "خففي من عرض كتفيكِ بإضافة حجم للجزء السفلي. الفساتين ذات التنانير الواسعة والمنفوشة مثالية لك.",
+    "التفاحة": "أفضل خيار لكِ هي الفساتين ذات قصة Empire أو الفساتين الفضفاضة التي لا تركز على منطقة الخصر، لإعطاء إيحاء بالطول والنحافة.",
+    "المستطيل": "مهمتك هي خلق منحنيات. اختاري الفساتين ذات الأحزمة، الكشكشة، أو الطبقات لإضافة حجم وتحديد لمظهرك."
+};
+
 
 const colorSwatches = {
     "cool": [ "img/colors/blue.jpeg", "img/colors/purple.png", "img/colors/green.png", "img/colors/pink.png" ],
@@ -36,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('measurements-form')) {
         function populateSelect(elementId, start, end, unit) {
             const select = document.getElementById(elementId);
+            if (!select) return;
             for (let i = start; i <= end; i++) {
                 const option = document.createElement('option');
                 option.value = i;
@@ -53,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function setupImageOptions(containerId) {
             const container = document.getElementById(containerId);
+            if (!container) return;
             const hiddenInput = document.getElementById(containerId.replace('-options', ''));
 
             container.addEventListener('click', function(event) {
@@ -71,40 +93,58 @@ document.addEventListener('DOMContentLoaded', function() {
         setupImageOptions('skin-tone-options');
 
         function calculateBodyShape(shoulders, bust, waist, hips) {
-            const tolerance = 5;
-            if (Math.abs(shoulders - hips) <= tolerance && bust >= (waist * 0.75)) {
-                return "الساعة الرملية";
-            } else if (hips > shoulders && hips > bust) {
-                return "الكمثري";
-            } else if (shoulders > hips && bust > hips) {
+            const tolerance = 5; // نسبة التفاوت المسموح بها
+            const shoulderHipsDiff = Math.abs(shoulders - hips);
+            
+            // المثلث المقلوب: أكتاف أعرض من الأرداف بشكل ملحوظ
+            if (shoulders > hips + tolerance) {
                 return "المثلث المقلوب";
-            } else if (bust >= (waist * 1.05) && waist >= hips) {
+            }
+            // الكمثري: أرداف أعرض من الأكتاف بشكل ملحوظ
+            else if (hips > shoulders + tolerance && hips > bust) {
+                return "الكمثري";
+            }
+            // الساعة الرملية: أكتاف وأرداف متقاربة مع خصر محدد
+            else if (shoulderHipsDiff <= tolerance && waist < shoulders * 0.75 && waist < hips * 0.75) {
+                return "الساعة الرملية";
+            }
+             // التفاحة: الخصر أعرض أو مقارب للأكتاف والأرداف
+            else if (waist >= shoulders || waist >= hips) {
                 return "التفاحة";
-            } else if (Math.abs(shoulders - hips) <= tolerance && Math.abs(bust - hips) <= tolerance && Math.abs(waist - (shoulders * 0.75)) > tolerance) {
+            }
+            // المستطيل: المقاسات الثلاثة (أكتاف، خصر، أرداف) متقاربة
+            else if (shoulderHipsDiff <= tolerance && Math.abs(bust - hips) <= tolerance && waist > (shoulders * 0.75)) {
                 return "المستطيل";
-            } else {
-                return "غير معروف";
+            }
+             else {
+                return "المستطيل"; // كحالة افتراضية إذا لم تتطابق الشروط الأخرى
             }
         }
 
-        document.getElementById('measurements-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        const form = document.getElementById('measurements-form');
+        if(form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
 
-            const name = document.getElementById('user-name').value;
-            const height = parseInt(document.getElementById('height').value);
-            const weight = parseInt(document.getElementById('weight').value);
-            const shoulders = parseInt(document.getElementById('shoulders').value);
-            const bust = parseInt(document.getElementById('bust').value);
-            const waist = parseInt(document.getElementById('waist').value);
-            const hips = parseInt(document.getElementById('hips').value);
-            const undertone = document.getElementById('undertone').value;
-            const skinTone = document.getElementById('skin-tone').value;
+                const name = document.getElementById('user-name').value;
+                const shoulders = parseInt(document.getElementById('shoulders').value);
+                const bust = parseInt(document.getElementById('bust').value);
+                const waist = parseInt(document.getElementById('waist').value);
+                const hips = parseInt(document.getElementById('hips').value);
+                const undertone = document.getElementById('undertone').value;
+                const skinTone = document.getElementById('skin-tone').value;
 
-            const bodyShape = calculateBodyShape(shoulders, bust, waist, hips);
+                if (!undertone || !skinTone) {
+                    alert("الرجاء اختيار الأندرتون ولون البشرة.");
+                    return;
+                }
 
-            const resultUrl = `result.html?name=${encodeURIComponent(name)}&shape=${encodeURIComponent(bodyShape)}&undertone=${encodeURIComponent(undertone)}&skin-tone=${encodeURIComponent(skinTone)}`;
-            window.location.href = resultUrl;
-        });
+                const bodyShape = calculateBodyShape(shoulders, bust, waist, hips);
+
+                const resultUrl = `result.html?name=${encodeURIComponent(name)}&shape=${encodeURIComponent(bodyShape)}&undertone=${encodeURIComponent(undertone)}&skin-tone=${encodeURIComponent(skinTone)}`;
+                window.location.href = resultUrl;
+            });
+        }
     }
 
     // ----------- صفحة النتيجة (result.html) -----------
@@ -113,12 +153,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const name = params.get('name');
         const undertone = params.get('undertone');
         const shape = params.get('shape');
-        const skinTone = params.get('skin-tone');
 
         document.getElementById('welcome-message').textContent = `أهلاً بكِ، ${name}!`;
         document.getElementById('body-shape-result').textContent = shape;
         document.getElementById('body-shape-image').src = bodyShapeImages[shape] || '';
         document.getElementById('body-shape-image').alt = `شكل الجسم: ${shape}`;
+        
+        // ✅ عرض نصيحة شكل الجسم
+        document.getElementById('body-shape-advice').textContent = bodyShapeAdvice[shape] || '';
+
+
+        const undertoneMap = { cool: 'بارد', warm: 'دافئ', neutral: 'محايد'};
+        document.getElementById('undertone-result').textContent = undertoneMap[undertone] || undertone;
+
 
         const colorContainer = document.getElementById('color-palette-container');
         const recommendedColors = colorSwatches[undertone] || [];
@@ -130,8 +177,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 img.classList.add('color-box');
                 colorContainer.appendChild(img);
             });
-        } else {
-            colorContainer.innerHTML = '<p>لم يتم العثور على ألوان موصى بها لهذا الأندرتون.</p>';
         }
 
         const dressContainer = document.getElementById('dress-gallery-container');
@@ -143,17 +188,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (recommendedDresses.length > 0) {
             recommendedDresses.forEach(dress => {
+                // ✅ جعل الفساتين قابلة للنقر
+                const link = document.createElement('a');
+                link.href = `order.html?id=${dress.id}`;
+
+                const dressItem = document.createElement('div');
+                dressItem.className = 'dress-item';
+
                 const img = document.createElement('img');
                 img.src = dress.image_url;
                 img.alt = dress.name;
-                dressContainer.appendChild(img);
+                
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'dress-item-name';
+                nameDiv.textContent = dress.name;
+
+                dressItem.appendChild(img);
+                dressItem.appendChild(nameDiv);
+                link.appendChild(dressItem);
+                dressContainer.appendChild(link);
             });
         } else {
             dressContainer.innerHTML = '<p>عذرًا، لم نجد فساتين تطابق اختياراتك تمامًا حاليًا. نقترح تجربة اختيارات أخرى.</p>';
         }
-
-        // عرض الأندرتون بالنص
-        const undertoneText = document.getElementById('undertone-result');
-        if (undertoneText) undertoneText.textContent = `نوع الأندرتون لديك: ${undertone}`;
     }
 });
