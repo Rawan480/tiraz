@@ -14,7 +14,7 @@ header {
 }
 
 .logo {
-    max-width: 200px;
+    max-width: 180px; /* Adjusted logo size */
     height: auto;
 }
 
@@ -65,7 +65,7 @@ header {
 }
 
 .hero-image-left img, .hero-image-right img {
-    max-width: 300px; /* حجم معقول للصور */
+    max-width: 250px; /* Adjusted image size */
     width: 100%; /* Make images fluid within their max-width */
     height: auto;
     border-radius: 10px;
@@ -106,18 +106,32 @@ header {
 }
 
 .form-group input[type="text"],
-.form-group select {
+.form-group select,
+.order-form .form-group input[type="text"], /* Added for order page inputs */
+.order-form .form-group input[type="tel"] { /* Added for order page inputs */
     padding: 12px 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1rem;
     width: 100%;
     box-sizing: border-box;
-    font-family: inherit; /* ✅  توحيد الخط هنا */
+    font-family: inherit; /* توحيد الخط هنا */
+    /* Fix for blue dropdown on mobile */
+    -webkit-appearance: none; /* Removes default iOS styling */
+    -moz-appearance: none; /* Removes default Firefox styling */
+    appearance: none; /* Removes default styling for other browsers */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23444444" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: left 10px center; /* Position arrow on the left for RTL */
+    padding-left: 40px; /* Make space for the arrow */
+    cursor: pointer;
 }
 
+
 .form-group input[type="text"]:focus,
-.form-group select:focus {
+.form-group select:focus,
+.order-form .form-group input[type="text"]:focus, /* Added for order page inputs */
+.order-form .form-group input[type="tel"]:focus { /* Added for order page inputs */
     border-color: #6e1423;
     outline: none;
     box-shadow: 0 0 5px rgba(110, 20, 35, 0.2);
@@ -281,6 +295,7 @@ footer {
     flex-wrap: wrap;
     gap: 30px;
     align-items: flex-start;
+    justify-content: center; /* Center items when they wrap */
 }
 
 .order-details, .order-form-container {
@@ -290,10 +305,12 @@ footer {
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     flex: 1;
     min-width: 300px;
+    text-align: right; /* Align text to right for RTL */
 }
 
 .order-details img {
-    max-width: 100%;
+    max-width: 100%; /* Ensure image is responsive */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 8px;
     margin-bottom: 20px;
 }
@@ -301,16 +318,99 @@ footer {
 .order-details h2 {
     color: #6e1423;
     margin-top: 0;
+    font-size: 1.8rem;
+}
+
+.order-details p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.dress-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3e8e41; /* Green color for price */
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
 
 .order-form-container h3 {
     margin-top: 0;
     color: #333;
+    font-size: 1.5rem;
 }
 .order-form .form-group {
     margin-bottom: 15px;
 }
 
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    left: 20px; /* Position on the left for RTL */
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    color: #6e1423;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.modal-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.modal-content .main-button {
+    margin-top: 15px;
+}
 
 /* Media Queries for Responsiveness */
 
@@ -372,6 +472,26 @@ footer {
         flex-direction: column;
         gap: 20px;
     }
+
+    .order-details, .order-form-container {
+        min-width: unset; /* Remove min-width on small screens */
+        width: 100%; /* Make them take full width */
+    }
+
+    .order-details img {
+        max-width: 80%; /* Limit image size relative to container on small screens */
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .modal-content {
+        padding: 25px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.6rem;
+    }
 }
 
 /* For screens smaller than 480px (e.g., mobile phones) */
@@ -402,7 +522,9 @@ footer {
     }
 
     .form-group input[type="text"],
-    .form-group select {
+    .form-group select,
+    .order-form .form-group input[type="text"], /* Added for order page inputs */
+    .order-form .form-group input[type="tel"] { /* Added for order page inputs */
         padding: 10px 12px;
         font-size: 0.9rem;
     }
@@ -439,5 +561,10 @@ footer {
     .order-details, .order-form-container {
         padding: 20px;
     }
-
+    .modal-content {
+        padding: 20px;
+    }
+    .modal-content h2 {
+        font-size: 1.4rem;
+    }
 }
