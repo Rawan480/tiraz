@@ -2,21 +2,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // يجب تعريف قاعدة البيانات هنا أيضاً لتتمكن الصفحة من الوصول إليها
     // في المشاريع الكبيرة، يتم استيرادها من ملف مشترك
     const dressDatabase = [
-        { id: 1, name: "فستان أزرق ملكي بقصة الحورية", image_url: "img/dresses/d1.jpg", suitable_body_shapes: ["الساعة الرملية"], suitable_undertones: ["cool"], price: 950 },
-        { id: 2, name: "فستان أحمر ناري بخصر محدد", image_url: "img/dresses/d2.jpg", suitable_body_shapes: ["الساعة الرملية"], suitable_undertones: ["warm"], price: 880 },
-        { id: 3, name: "فستان رمادي أنيق ملتف", image_url: "img/dresses/d3.jpg", suitable_body_shapes: ["الساعة الرملية"], suitable_undertones: ["neutral"], price: 790 },
-        { id: 4, name: "فستان بقصة A-line وأكمام منفوخة", image_url: "img/dresses/d4.jpg", suitable_body_shapes: ["الكمثري"], suitable_undertones: ["cool"], price: 720 },
-        { id: 5, name: "فستان بقصة Empire بلون الخوخ", image_url: "img/dresses/d5.jpg", suitable_body_shapes: ["الكمثري"], suitable_undertones: ["warm"], price: 810 },
-        { id: 6, name: "فستان أسود كلاسيكي بتنورة واسعة", image_url: "img/dresses/d6.jpg", suitable_body_shapes: ["الكمثري", "التفاحة"], suitable_undertones: ["cool", "warm", "neutral"], price: 990 },
-        { id: 7, name: "فستان وردي فاتح بتفاصيل عند الخصر", image_url: "img/dresses/d7.jpg", suitable_body_shapes: ["المثلث المقلوب"], suitable_undertones: ["cool"], price: 750 },
-        { id: 8, name: "فستان بياقة V عميقة ولون ترابي", image_url: "img/dresses/d8.jpg", suitable_body_shapes: ["المثلث المقلوب"], suitable_undertones: ["warm"], price: 830 },
-        { id: 9, name: "فستان بتنورة منفوشة ولون محايد", image_url: "img/dresses/d9.jpg", suitable_body_shapes: ["المثلث المقلوب"], suitable_undertones: ["neutral"], price: 910 },
-        { id: 10, name: "فستان أخضر زمردي بقصة مستقيمة", image_url: "img/dresses/d10.jpg", suitable_body_shapes: ["التفاحة"], suitable_undertones: ["cool"], price: 860 },
-        { id: 11, name: "فستان برتقالي منقوش بقصة فضفاضة", image_url: "img/dresses/d11.jpg", suitable_body_shapes: ["التفاحة"], suitable_undertones: ["warm"], price: 770 },
-        { id: 12, name: "فستان شيفون بيج بكسرات ناعمة", image_url: "img/dresses/d12.jpg", suitable_body_shapes: ["التفاحة"], suitable_undertones: ["neutral"], price: 840 },
-        { id: 13, name: "فستان بنفسجي بحزام لإضافة تحديد", image_url: "img/dresses/d13.jpg", suitable_body_shapes: ["المستطيل"], suitable_undertones: ["cool"], price: 700 },
-        { id: 14, name: "فستان ذهبي بطبقات متعددة", image_url: "img/dresses/d14.jpg", suitable_body_shapes: ["المستطيل"], suitable_undertones: ["warm"], price: 920 },
-        { id: 15, name: "فستان أبيض بكتف واحد", image_url: "img/dresses/d15.jpg", suitable_body_shapes: ["المستطيل"], suitable_undertones: ["neutral"], price: 890 }
+        { id: 1, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d5.png", suitable_body_shapes: ["الساعة الرملية"], suitable_undertones: ["cool"], price: 950 },
+    { id: 2, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d6.png", suitable_body_shapes: ["الساعة الرملية"], suitable_undertones: ["warm"], price: 880 },
+    { id: 3, name: "فستان انيق صُمم أجلك", image_url: "img/dresses/d4.png", suitable_body_shapes: ["الساعة الرملية"], suitable_undertones: ["neutral"], price: 790 },
+
+    // فساتين الكمثري
+    { id: 4, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d8.png", suitable_body_shapes: ["الكمثري"], suitable_undertones: ["cool"], price: 720 },
+    { id: 5, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d9.png", suitable_body_shapes: ["الكمثري"], suitable_undertones: ["warm"], price: 810 },
+    { id: 6, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d7.png", suitable_body_shapes: ["الكمثري", "التفاحة"], suitable_undertones: ["cool", "warm", "neutral"], price: 990 },
+
+    // فساتين المثلث المقلوب
+    { id: 7, name: "فستان انيق صُمم للأجلك", image_url: "img/dresses/d11.png", suitable_body_shapes: ["المثلث المقلوب"], suitable_undertones: ["cool"], price: 750 },
+    { id: 8, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d12.png", suitable_body_shapes: ["المثلث المقلوب"], suitable_undertones: ["warm"], price: 830 },
+    { id: 9, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d10.png", suitable_body_shapes: ["المثلث المقلوب"], suitable_undertones: ["neutral"], price: 910 },
+
+    // فساتين التفاحة
+    { id: 10, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d2.png", suitable_body_shapes: ["التفاحة"], suitable_undertones: ["cool"], price: 860 },
+    { id: 11, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d3.png", suitable_body_shapes: ["التفاحة"], suitable_undertones: ["warm"], price: 770 },
+    { id: 12, name: "فستان انيق صمم لأجلك", image_url: "img/dresses/d1.png", suitable_body_shapes: ["التفاحة"], suitable_undertones: ["neutral"], price: 840 },
+
+    // فساتين المستطيل
+    { id: 13, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d2.png", suitable_body_shapes: ["المستطيل"], suitable_undertones: ["cool"], price: 700 },
+    { id: 14, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d3.png", suitable_body_shapes: ["المستطيل"], suitable_undertones: ["warm"], price: 920 },
+    { id: 15, name: "فستان انيق صُمم لأجلك", image_url: "img/dresses/d1.png", suitable_body_shapes: ["المستطيل"], suitable_undertones: ["neutral"], price: 890 }
     ];
 
     const params = new URLSearchParams(window.location.search);
